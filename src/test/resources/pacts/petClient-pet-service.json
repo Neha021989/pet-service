@@ -9,12 +9,80 @@
         {
             "description": "A request to /pets",
             "request": {
+                "method": "POST",
+                "path": "/pets",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "name": "Bruno",
+                    "type": "Dog"
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.name": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.type": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                }
+            },
+            "response": {
+                "status": 200
+            },
+            "providerStates": [
+                {
+                    "name": "Create a new pet"
+                }
+            ]
+        },
+        {
+            "description": "A request to /pets",
+            "request": {
                 "method": "GET",
                 "path": "/pets"
             },
             "response": {
                 "status": 200,
-                "body": "dog"
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "name": "Bruno",
+                    "type": "Dog"
+                },
+                "matchingRules": {
+                    "body": {
+                        "$.name": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        },
+                        "$.type": {
+                            "matchers": [
+                                {
+                                    "match": "type"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                }
             },
             "providerStates": [
                 {

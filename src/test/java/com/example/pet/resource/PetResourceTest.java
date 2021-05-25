@@ -31,10 +31,10 @@ public class PetResourceTest {
 
 	@BeforeEach
 	void before(PactVerificationContext context) {
-		context.setTarget(new HttpTestTarget("localhost", 8084));
+		context.setTarget(new HttpTestTarget("localhost", port));
 	}
 
-	@State({ "Pet exists" })
+	@State({ "Pet exists", "Create a new pet" })
 	public void toState() {
 	}
 
