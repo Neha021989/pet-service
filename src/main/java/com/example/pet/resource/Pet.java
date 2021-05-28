@@ -18,11 +18,11 @@ public class Pet {
 		return type;
 	}
 
-	public void setType() {
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	public void setName() {
+	public void setName(String name) {
 		this.name = name;
 	}
 }

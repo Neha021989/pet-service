@@ -34,7 +34,7 @@ public class PetResourceTest {
 		context.setTarget(new HttpTestTarget("localhost", port));
 	}
 
-	@State({ "Pet exists", "Create a new pet" })
+	@State({ "Pet exists", "Create a new pet", "Update a new pet", "delete a new pet" })
 	public void toState() {
 	}
 
