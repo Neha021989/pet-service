@@ -1,18 +1,17 @@
 package com.example.pet.resource;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import au.com.dius.pact.provider.junit.Provider;
-import au.com.dius.pact.provider.junit.State;
-import au.com.dius.pact.provider.junit.loader.PactFolder;
-import au.com.dius.pact.provider.junit5.HttpTestTarget;
-import au.com.dius.pact.provider.junit5.PactVerificationContext;
-import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
+import au.com.dius.pact.provider.junitsupport.Provider;
+import au.com.dius.pact.provider.junitsupport.State;
+import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
+import au.com.dius.pact.provider.junitsupport.target.TestTarget;
+import au.com.dius.pact.provider.spring.junit5.MockMvcTestTarget;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -20,18 +19,18 @@ import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvide
 @PactFolder("src/test/resources/pacts")
 public class PetResourceTest {
 
-	@TestTemplate
-	@ExtendWith(PactVerificationInvocationContextProvider.class)
-	void pactVerificationTestTemplate(PactVerificationContext context) {
-		context.verifyInteraction();
-	}
+	@Autowired
+	private PetResource petResource;
+
+	@TestTarget
+	public final MockMvcTestTarget target = new MockMvcTestTarget();
 
 	@LocalServerPort
 	private int port;
 
 	@BeforeEach
-	void before(PactVerificationContext context) {
-		context.setTarget(new HttpTestTarget("localhost", port));
+	void before() {
+		target.setControllers(petResource);
 	}
 
 	@State({ "Pet exists", "Create a new pet", "Update a new pet", "delete a new pet" })

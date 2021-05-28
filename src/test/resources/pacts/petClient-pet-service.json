@@ -1,214 +1,214 @@
 {
-    "provider": {
-        "name": "pet-service"
-    },
-    "consumer": {
-        "name": "petClient"
-    },
-    "interactions": [
-        {
-            "description": "A request to /pets",
-            "request": {
-                "method": "POST",
-                "path": "/pets",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": {
-                    "name": "Bruno",
-                    "type": "Dog"
-                },
-                "matchingRules": {
-                    "body": {
-                        "$.name": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        },
-                        "$.type": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        }
-                    }
-                }
-            },
-            "response": {
-                "status": 200
-            },
-            "providerStates": [
-                {
-                    "name": "Create a new pet"
-                }
-            ]
+  "provider": {
+    "name": "pet-service"
+  },
+  "consumer": {
+    "name": "petClient"
+  },
+  "interactions": [
+    {
+      "description": "A request to /pets",
+      "request": {
+        "method": "POST",
+        "path": "/pets",
+        "headers": {
+          "Content-Type": "application/json"
         },
-        {
-            "description": "A request to /pets",
-            "request": {
-                "method": "GET",
-                "path": "/pets"
-            },
-            "response": {
-                "status": 200,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": {
-                    "name": "Bruno",
-                    "type": "Dog"
-                },
-                "matchingRules": {
-                    "body": {
-                        "$.name": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        },
-                        "$.type": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        }
-                    }
-                }
-            },
-            "providerStates": [
-                {
-                    "name": "Pet exists"
-                }
-            ]
+        "body": {
+          "name": "Bruno",
+          "type": "Dog"
         },
-        {
-            "description": "A request to /pets",
-            "request": {
-                "method": "PUT",
-                "path": "/pets/YEI",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": {
-                    "name": "Bruno",
-                    "type": "Dog"
-                },
-                "matchingRules": {
-                    "body": {
-                        "$.name": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        },
-                        "$.type": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        }
-                    },
-                    "path": {
-                        "matchers": [
-                            {
-                                "match": "regex",
-                                "regex": "/pets/[A-Za-z]+"
-                            }
-                        ],
-                        "combine": "AND"
-                    }
-                }
-            },
-            "response": {
-                "status": 200,
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": {
-                    "name": "Bruno",
-                    "type": "Dog"
-                },
-                "matchingRules": {
-                    "body": {
-                        "$.name": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        },
-                        "$.type": {
-                            "matchers": [
-                                {
-                                    "match": "regex",
-                                    "regex": "[A-Za-z]*"
-                                }
-                            ],
-                            "combine": "AND"
-                        }
-                    }
-                }
-            },
-            "providerStates": [
+        "matchingRules": {
+          "body": {
+            "$.name": {
+              "matchers": [
                 {
-                    "name": "Update a new pet"
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
                 }
-            ]
-        },
-        {
-            "description": "A request to /pets",
-            "request": {
-                "method": "DELETE",
-                "path": "/pets/kX",
-                "matchingRules": {
-                    "path": {
-                        "matchers": [
-                            {
-                                "match": "regex",
-                                "regex": "/pets/[A-Za-z]+"
-                            }
-                        ],
-                        "combine": "AND"
-                    }
-                }
+              ],
+              "combine": "AND"
             },
-            "response": {
-                "status": 200
-            },
-            "providerStates": [
+            "$.type": {
+              "matchers": [
                 {
-                    "name": "delete a new pet"
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
                 }
-            ]
+              ],
+              "combine": "AND"
+            }
+          }
         }
-    ],
-    "metadata": {
-        "pactSpecification": {
-            "version": "3.0.0"
-        },
-        "pact-jvm": {
-            "version": "3.5.24"
+      },
+      "response": {
+        "status": 200
+      },
+      "providerStates": [
+        {
+          "name": "Create a new pet"
         }
+      ]
+    },
+    {
+      "description": "A request to /pets",
+      "request": {
+        "method": "GET",
+        "path": "/pets"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "Bruno",
+          "type": "Dog"
+        },
+        "matchingRules": {
+          "body": {
+            "$.name": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.type": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Pet exists"
+        }
+      ]
+    },
+    {
+      "description": "A request to /pets",
+      "request": {
+        "method": "PUT",
+        "path": "/pets/Xp",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "Bruno",
+          "type": "Dog"
+        },
+        "matchingRules": {
+          "path": {
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "/pets/[A-Za-z]+"
+              }
+            ],
+            "combine": "AND"
+          },
+          "body": {
+            "$.name": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.type": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "Bruno",
+          "type": "Dog"
+        },
+        "matchingRules": {
+          "body": {
+            "$.name": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.type": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[A-Za-z]*"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Update a new pet"
+        }
+      ]
+    },
+    {
+      "description": "A request to /pets",
+      "request": {
+        "method": "DELETE",
+        "path": "/pets/iE",
+        "matchingRules": {
+          "path": {
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "/pets/[A-Za-z]+"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      },
+      "response": {
+        "status": 200
+      },
+      "providerStates": [
+        {
+          "name": "delete a new pet"
+        }
+      ]
     }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.0"
+    }
+  }
 }
